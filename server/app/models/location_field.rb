@@ -1,0 +1,2 @@
+class LocationField < ApplicationRecord
+end

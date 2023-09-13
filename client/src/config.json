@@ -1,0 +1,77 @@
+{
+    "geojsonObject":{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "coordinates": [
+            -73.96127720370524,
+            40.72222885449216
+          ],
+          "type": "Point"
+        }
+      }
+    ]
+  },
+  "geojsonObject2":{
+    "type": "FeatureCollection",
+    "features": [ 
+  {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "coordinates": [
+            -73.96711012842171,
+            40.78158584133013
+          ],
+          "type": "Point"
+        }
+      }
+     ]
+   },
+   "geojsonObject3":{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "coordinates": [
+            -73.96127720370524,
+            40.72222885449216
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "coordinates": [
+            -73.97453948427882,
+            40.79924690990438
+          ],
+          "type": "Point"
+        }
+      }
+    ]
+  },
+  "geojsonObject4": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "coordinates": [
+            -73.95544567678772,
+            40.668880822981464
+          ],
+          "type": "Point"
+        }
+      }
+    ]
+  }
+}

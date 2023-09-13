@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  db: 
+    image: postgres
+    container_name: db
+    environment:
+      DB_HOST_NAME: "${DB_HOST_NAME}"
+      POSTGRES_USERNAME: "${POSTGRES_USERNAME}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+  server:
+    build: 
+      context: ./server
+    image: pnp_server
+    container_name: pnp_server
+    depends_on: 
+      - db
+    volumes: 
+     - ./server:/server
+    environment:
+       SERVER_HOST_NAME: "${SERVER_HOST_NAME}"
+       DB_HOST_NAME: "${DB_HOST_NAME}"
+       POSTGRES_USERNAME: "${POSTGRES_USERNAME}"
+       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+    env_file:
+      - .env
+    ports: 
+     - 3000:3000
+  client: 
+    build: 
+      context: ./client
+    image: pnp_client
+    container_name: pnp_client
+    volumes: 
+      - ./client:/client
+    depends_on:
+      - server
+    environment:
+      VITE_API_ENDPOINT: "${VITE_API_ENDPOINT}"
+    env_file:
+      - .env
+    ports:
+      - 8080:8080
