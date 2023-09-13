@@ -1,14 +1,14 @@
 # start from base 
-FROM node:20.6
+FROM node:14
 
 # start up working directory
 WORKDIR /client
 
-# copy package.json files
-COPY package.json .
+# Copy package.json and package-lock.json files
+COPY package.json package-lock.json* ./
 
 # install dependencies
-RUN npm install
+RUN npm install --silent
 
 # copy files to container 
 COPY . ./
