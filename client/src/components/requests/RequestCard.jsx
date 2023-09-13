@@ -3,19 +3,10 @@ import styled from 'styled-components'
 import { AiOutlineLike, AiOutlineDislike } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
 import { updateRequestDislikes, updateRequestLikes } from '../../redux/requests/requestsSlice';
+import { useRequestActions } from '../../hooks/useLikes';
 
 function RequestCard({request}) {
-    const dispatch = useDispatch();
-    const id = request.id;
-
-    // like functionality
-    const handleLikeRequest = () => {
-        dispatch(updateRequestLikes({likes: request.likes + 1, id}));
-    }
-    // dislike functionality
-    const handleDislikeRequest = () => {
-        dispatch(updateRequestDislikes({dislikes: request.dislikes + 1, id}));
-    }
+    const { like, dislike } = useRequestActions(request);
 
   return (
     <Container>
@@ -24,10 +15,10 @@ function RequestCard({request}) {
             <p>{request.location}</p>
             <p>Requested by: {request.player.name}</p>
             <div className="icon-group">
-                <button className="request-like" onClick={() => handleLikeRequest(request.id)}>
+                <button className="request-like" onClick={like}>
                     <AiOutlineLike /> {request.likes}
                 </button>
-                <button className="request-dislike" onClick={() => handleDislikeRequest(request.id)}>
+                <button className="request-dislike" onClick={dislike}>
                     <AiOutlineDislike /> {request.dislikes}
                 </button>
             </div>
