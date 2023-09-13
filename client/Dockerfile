@@ -1,21 +1,17 @@
 # start from base 
 FROM node:20
 
-# start up working directory
+# Set the working directory to /client (inside the container)
 WORKDIR /client
 
-# Copy package.json and package-lock.json files
-COPY package.json  .
-COPY package-lock.json .
+# Copy package.json and package-lock.json files from the client directory to the container
+COPY package.json package-lock.json* ./
 
-# install dependencies
+# Install dependencies (inside the container)
 RUN npm install --silent
 
-# makes the vite executable within the node_modules directory executable.
-RUN chmod +x ./node_modules/.bin/vite
-
-# copy files to container 
-COPY . .
+# Copy the rest of your application files from the client directory to the container
+COPY . ./
 
 # expose port 
 EXPOSE 8080
