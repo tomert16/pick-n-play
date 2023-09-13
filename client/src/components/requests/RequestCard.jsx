@@ -1,9 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { AiOutlineLike, AiOutlineDislike } from 'react-icons/ai';
-import { useDispatch } from 'react-redux';
-import { updateRequestDislikes, updateRequestLikes } from '../../redux/requests/requestsSlice';
-import { useRequestActions } from '../../hooks/useLikes';
+import { useRequestActions } from '../../hooks/useRequestActions';
 
 function RequestCard({request}) {
     const { like, dislike } = useRequestActions(request);
