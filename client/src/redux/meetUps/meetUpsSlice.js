@@ -50,5 +50,5 @@ const meetUpsSlice = createSlice(
     }
 );
 
-
+export const { sortedMeetUps } = meetUpsSlice.actions;
 export default meetUpsSlice.reducer;

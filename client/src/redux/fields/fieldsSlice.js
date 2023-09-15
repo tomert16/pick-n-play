@@ -40,6 +40,7 @@ const fieldsSlice = createSlice(
                 })
                 .addCase(fetchFieldById.fulfilled, (state, action) => {
                     state.byId = action.payload;
+                    state.byId.meet_ups = state.byId.meet_ups.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
                 })
                 .addCase(addNewField.fulfilled, (state, action) => {
                     state.list.push(action.payload);

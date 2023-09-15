@@ -84,6 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_193925) do
     t.string "sport_type"
     t.string "img_url"
     t.string "bg_img"
+    t.integer "total_players"
     t.integer "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

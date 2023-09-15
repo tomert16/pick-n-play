@@ -94,6 +94,7 @@ function FieldInfo({selectedField, setSelectedField, handleAddTeammate, location
                             setSelectedField={setSelectedField}
                             loggedInPlayer={loggedInPlayer}
                             handleAddTeammate={handleAddTeammate}
+                            
                         />
                     )
                 )}

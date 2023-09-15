@@ -4,6 +4,7 @@ class CreateSports < ActiveRecord::Migration[7.0]
       t.string :sport_type
       t.string :img_url
       t.string :bg_img
+      t.integer :total_players
       t.integer :location_id
 
       t.timestamps

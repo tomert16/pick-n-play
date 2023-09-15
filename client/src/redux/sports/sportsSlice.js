@@ -46,6 +46,7 @@ export const sportsSlice = createSlice(
                 .addCase(fetchSportById.fulfilled, (state, action) => {
                     state.isLoading = false;
                     state.byId = action.payload;
+                    state.byId.meet_ups = state.byId.meet_ups.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
                 })
                 .addCase(addNewSport.fulfilled, (state, action) => {
                     state.list.push(action.payload);

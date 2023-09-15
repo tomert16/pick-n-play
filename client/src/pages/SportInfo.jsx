@@ -67,6 +67,8 @@ function SportInfo({ setSelectedMeetUp, handleAddTeammate, locations }) {
     if (individualSport === undefined){
         return null;
     }
+ 
+
     // Pagination variables and values 
     const indexOfLastCard = currentSlide * amountOfMeetUps;
     const indexOfFirstCard = indexOfLastCard - amountOfMeetUps;
@@ -95,6 +97,7 @@ function SportInfo({ setSelectedMeetUp, handleAddTeammate, locations }) {
                                     key={meetUp.id}
                                     loggedInPlayer={loggedInPlayer}
                                     handleAddTeammate={handleAddTeammate}
+                                    individualSport={individualSport}
                                 />
                             )
                         )}

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 
 
-function MeetUpsList({ meetUp, setSelectedMeetUp, loggedInPlayer }) {
+function MeetUpsList({ meetUp, setSelectedMeetUp, loggedInPlayer, individualSport }) {
   const [showMeetUp, setShowMeetUp] = useState(false);
   const [isFull, setIsFull] = useState(false);
 
@@ -16,35 +16,13 @@ function MeetUpsList({ meetUp, setSelectedMeetUp, loggedInPlayer }) {
   setShowMeetUp(true)
 }
 
+
   // determine the total number of players
   const totalPlayers = meetUp.teammates.length + 1;
-  const playersNumber = () => {
-    if (meetUp.sport.sport_type === "Soccer") {
-      return (totalPlayers + '/14')
-    } if 
-      (meetUp.sport.sport_type === "Basketball") {
-        return (totalPlayers + '/10')
-    } if 
-    (meetUp.sport.sport_type === "Tennis") {
-      return (totalPlayers + '/4')
-    } if 
-    (meetUp.sport.sport_type === "Football") {
-      return (totalPlayers + '/10')
-    } if 
-    (meetUp.sport.sport_type === "Volleyball") {
-      return (totalPlayers + '/10')
-    }
-  }
 
   
 // determine if a meetUp is full
-  const isMeetUpFull = 
-      (meetUp.sport.sport_type === 'Soccer' && totalPlayers >= 14) ||
-      (meetUp.sport.sport_type === 'Basketball' && totalPlayers >= 10) ||
-      (meetUp.sport.sport_type === 'Tennis' && totalPlayers >= 4) ||
-      (meetUp.sport.sport_type === 'Football' && totalPlayers >= 10) ||
-      (meetUp.sport.sport_type === 'Volleyball' && totalPlayers >= 10);
-      
+  const isMeetUpFull = totalPlayers >= meetUp.sport.total_players;
 
   useEffect(() => {
     if (isMeetUpFull) {
@@ -63,7 +41,7 @@ function MeetUpsList({ meetUp, setSelectedMeetUp, loggedInPlayer }) {
             <h4>{meetUp.field.name}</h4>
             <p>{meetUp.date}</p>
             <p>Host: {meetUp.player.name}</p>
-            <p>{playersNumber()}</p>
+            <p>{`${totalPlayers}/${meetUp.sport.total_players}`}</p>
           </div>
         </div>
         {showMeetUp ? <MeetUpCard 

@@ -14,30 +14,8 @@ function FieldMeetUpList({meetUp, loggedInPlayer, handleAddTeammate, fieldMeetUp
     }
 
     const totalPlayers = meetUp?.teammates?.length + 1
-    const playersNumber = () => {
-        if (meetUp.sport.type === "Soccer") {
-          return (totalPlayers + '/14')
-        } if 
-          (meetUp.sport.type === "Basketball") {
-            return (totalPlayers + '/10')
-        } if 
-        (meetUp.sport.type === "Tennis") {
-          return (totalPlayers + '/4')
-      } if 
-      (meetUp.sport.type === "Football") {
-        return (totalPlayers + '/10')
-      } if 
-      (meetUp.sport.type === "Volleyball") {
-        return (totalPlayers + '/10')
-      }
-    }
     // determine if a meetUp is full
-    const isMeetUpFull = 
-      (meetUp?.sport.type === 'Soccer' && totalPlayers >= 14) ||
-      (meetUp?.sport.type === 'Basketball' && totalPlayers >= 10) ||
-      (meetUp?.sport.type === 'Tennis' && totalPlayers >= 4) ||
-      (meetUp?.sport.type === 'Football' && totalPlayers >= 10) ||
-      (meetUp?.sport.type === 'Volleyball' && totalPlayers >= 10);
+    const isMeetUpFull = totalPlayers >= meetUp.sport.total_players;
 
       useEffect(() => {
         if (isMeetUpFull) {
@@ -57,7 +35,7 @@ function FieldMeetUpList({meetUp, loggedInPlayer, handleAddTeammate, fieldMeetUp
               <h4>{meetUp.sport.type}</h4>
               <p> {meetUp.date}</p>
               <p>Host: {meetUp.player.name}</p>
-              <p>{playersNumber()}</p>
+              <p>{`${totalPlayers}/${meetUp.sport.total_players}`}</p>
             </div>
           </div>
         </div>

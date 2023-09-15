@@ -1,5 +1,5 @@
 class MeetUpWithSportSerializer < ActiveModel::Serializer
-  attributes :id, :date, :longitude, :latitude, :field, :player, :sport, :teammates
+  attributes :id, :date, :longitude, :latitude, :field, :player, :sport, :teammates, :created_at, :total_players
   has_many :player_meet_ups
 
   def player
@@ -19,7 +19,8 @@ class MeetUpWithSportSerializer < ActiveModel::Serializer
   def sport
     {
       "type": object.sport.sport_type,
-      "image": object.sport.img_url
+      "image": object.sport.img_url,
+      "total_players": object.sport.total_players
     }
   end
 
@@ -32,6 +33,10 @@ class MeetUpWithSportSerializer < ActiveModel::Serializer
   end
   def date 
     object.date.to_fs(:long)
+  end
+
+  def total_players
+    object.sport.total_players
   end
 
 end
