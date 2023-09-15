@@ -4,6 +4,16 @@ import TableRow from '@mui/material/TableRow';
 
 
 function RequestManagementList({ request, handleDeleteRequest }) {
+
+   //get the average percentage of likes 
+   const average = () => {
+     const likesAverage = Math.floor((request.likes / request.dislikes) * 100);
+     if (request.likes < 5 && request.dislikes < 5 || isNaN(likesAverage)) {
+        return 'Insufficient data'
+       } 
+     return (likesAverage);
+   }
+
     
   return (
     <>
@@ -24,6 +34,7 @@ function RequestManagementList({ request, handleDeleteRequest }) {
               <TableCell align="center">{request.player.name}</TableCell>
               <TableCell align="right">{request.likes}</TableCell>
               <TableCell align="center">{request.dislikes}</TableCell>
+              <TableCell align="left" style={{color: average() >= 60 ? 'green' : 'red'}}>{request.likes < 5 && request.dislikes < 5 ? average() :`${average()}%`}</TableCell>
             </TableRow>
     </>
 )

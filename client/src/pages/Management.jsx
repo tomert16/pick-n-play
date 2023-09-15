@@ -110,6 +110,7 @@ function Management() {
                     <TableCell align="center">Requester</TableCell>
                     <TableCell align="right">Likes</TableCell>
                     <TableCell align="center">Dislikes</TableCell>
+                    <TableCell align="left">Average</TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>

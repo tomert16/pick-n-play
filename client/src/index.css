@@ -835,3 +835,11 @@ code {
  .loader-square:nth-of-type(7) {
   animation-delay: -10s;
  }
+
+/* request likes average */
+.green-text {
+  color: green;
+}
+.red-text {
+  color: red;
+}
