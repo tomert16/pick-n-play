@@ -31,6 +31,7 @@ services:
       context: ./client
     image: pnp_client
     container_name: pnp_client
+    command: sh -c "npm install --silent && npm run dev"
     volumes: 
       - ./client:/client
     depends_on:
