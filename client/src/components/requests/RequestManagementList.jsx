@@ -7,7 +7,8 @@ function RequestManagementList({ request, handleDeleteRequest }) {
 
    //get the average percentage of likes 
    const average = () => {
-     const likesAverage = Math.floor((request.likes / request.dislikes) * 100);
+     const sum = request.likes + request.dislikes;
+     const likesAverage = Math.floor((request.likes / sum) * 100);
      if (request.likes < 5 && request.dislikes < 5 || isNaN(likesAverage)) {
         return 'Insufficient data'
        } 
