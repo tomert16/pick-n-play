@@ -45,11 +45,14 @@ function WelcomePage() {
 
 const Container = styled.div`
   .locations-list {
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minMax(10rem, 20rem));
-    grid-gap: 3rem;
+    display: flex;
+    /* grid-template-columns: repeat(auto-fit, minMax(10rem, 20rem));
+    grid-gap: 3rem; */
+    flex-wrap: wrap;
+    gap: 1.5rem;
     font-family: "Ultra", serif;
     justify-content: center;
+    
   }
   .home-prompt {
   font-size: 60px;

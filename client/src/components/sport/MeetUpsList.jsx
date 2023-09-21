@@ -61,15 +61,15 @@ MeetUpsList.propTypes = {
 }
 
 const Container = styled.div`
-  margin-bottom: 5rem;
+  /* margin-bottom: 5rem; */
   .open{
     border-style: solid;
     border-radius: 2pc;
-    width: 16vw;
+    width: 17vw;
     height: 90%;
     position: relative;
-    left: 36%;
-    top: 2rem;
+    left: 30%;
+    /* top: 2rem; */
     margin-bottom: 4rem;
     cursor: pointer;
     background-color: white;
@@ -80,8 +80,8 @@ const Container = styled.div`
     width: 16vw;
     height: 90%;
     position: relative;
-    left: 36%;
-    top: 2rem;
+    left: 30%;
+    /* top: 2rem; */
     margin-bottom: 4rem;
     background-color: white;
     filter: brightness(45%)

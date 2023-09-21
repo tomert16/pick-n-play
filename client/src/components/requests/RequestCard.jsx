@@ -30,7 +30,7 @@ const Container = styled.div`
         background-color: white;
         border-style: solid;
         border-radius: 10px;
-        width: 13rem;
+        width: 13vw;
         height: 100%;
         text-align: center;
     }

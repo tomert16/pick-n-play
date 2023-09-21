@@ -31,14 +31,19 @@ const fieldsSlice = createSlice(
         name: 'fields',
         initialState: {
             list: [],
-            byId: undefined
+            byId: undefined,
+            isLoading: false,
         },
         extraReducers: (builder) => {
             builder
                 .addCase(fetchAllFields.fulfilled, (state, action) => {
                     state.list = action.payload;
                 })
+                .addCase(fetchFieldById.pending, (state) => {
+                    state.isLoading = true;
+                })
                 .addCase(fetchFieldById.fulfilled, (state, action) => {
+                    state.isLoading = false;
                     state.byId = action.payload;
                     state.byId.meet_ups = state.byId.meet_ups.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
                 })
@@ -51,4 +56,5 @@ const fieldsSlice = createSlice(
 
 export const selectAllFields = (state) => state.fields.list;
 export const selectFieldById = (state) => state.fields.byId;
+export const isLoadingData = (state) => state.sports.isLoading;
 export default fieldsSlice.reducer;

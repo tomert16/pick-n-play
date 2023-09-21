@@ -67,7 +67,12 @@ meetup16 = MeetUp.create(sport_id: bball2.id, date: DateTime.new(2023, 3, 7, 10,
 meetup17 = MeetUp.create(sport_id:football2.id, date:DateTime.new(2023, 3, 23, 13, 0, 0), field_id: mia_field3.id, player_id: dan.id)
 meetup18 = MeetUp.create(sport_id: bball3.id, date: DateTime.new(2023, 3, 17, 16, 15, 0), field_id: mb_field4.id, player_id: joey.id)
 meetup19 = MeetUp.create(sport_id: soccer1.id, date: DateTime.new(2023, 3, 7, 10, 30, 0), field_id: ny_field1.id, player_id: kevin.id)
-meetup20 = MeetUp.create(sport_id: soccer1.id, date: DateTime.new(2023, 3, 26, 11, 0, 0), field_id: ny_field1.id, player_id: olivia.id)
+meetup20 = MeetUp.create(sport_id: soccer1.id, date: DateTime.new(2023, 3, 3, 11, 0, 0), field_id: ny_field1.id, player_id: olivia.id)
+meetup20 = MeetUp.create(sport_id: soccer1.id, date: DateTime.new(2023, 3, 2, 11, 50, 0), field_id: ny_field2.id, player_id: kevin.id)
+meetup20 = MeetUp.create(sport_id: soccer1.id, date: DateTime.new(2023, 3, 16, 21, 0, 0), field_id: ny_field3.id, player_id: avi.id)
+meetup20 = MeetUp.create(sport_id: soccer1.id, date: DateTime.new(2023, 3, 30, 13, 0, 0), field_id: ny_field4.id, player_id: dan.id)
+meetup20 = MeetUp.create(sport_id: soccer1.id, date: DateTime.new(2023, 3, 11, 15, 0, 0), field_id: ny_field2.id, player_id: joey.id)
+meetup20 = MeetUp.create(sport_id: soccer1.id, date: DateTime.new(2023, 3, 25, 12, 0, 0), field_id: ny_field2.id, player_id: avi.id)
 
 puts "🧑‍💼👩‍💼🏢 Seeding admins..."
 admin1 = Admin.create(name: "Tomer Tal", email: "tomer@gmail.com", password: "610tt")

@@ -50,8 +50,8 @@ const Container = styled.div`
     font-weight: bolder;
   }
   img {
-    height: 18rem;
-    width: 20rem;
+    height: 22vw;
+    width: 22vw;
     border-style: solid;
     border-radius: .5rem;
     border-color: rgb(255, 205, 98);

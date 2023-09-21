@@ -59,10 +59,10 @@ function FieldMeetUpList({meetUp, loggedInPlayer, handleAddTeammate, fieldMeetUp
     .open{
       border-style: solid;
       border-radius: 2pc;
-      width: 16vw;
+      width: 17vw;
       height: 90%;
       position: relative;
-      left: 35%;
+      left: 30%;
       margin-bottom: 4rem;
       cursor: pointer;
       background-color: white;
@@ -73,7 +73,7 @@ function FieldMeetUpList({meetUp, loggedInPlayer, handleAddTeammate, fieldMeetUp
       width: 16vw;
       height: 90%;
       position: relative;
-      left: 35%;
+      left: 30%;
       margin-bottom: 4rem;
       background-color: white;
       filter: brightness(45%)

@@ -4,7 +4,7 @@ import FieldMeetUpList from '../components/field/FieldMeetUpList';
 import NavBar from '../components/NavBar';
 import { Form } from "semantic-ui-react";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchFieldById, selectFieldById } from '../redux/fields/fieldsSlice';
+import { fetchFieldById, isLoadingData, selectFieldById } from '../redux/fields/fieldsSlice';
 import { selectLoggedInPlayer } from '../redux/players/playersSlice';
 import styled from 'styled-components';
 import { addNewMeetUp } from '../redux/meetUps/meetUpsSlice';
@@ -24,16 +24,9 @@ function FieldInfo({selectedField, setSelectedField, handleAddTeammate, location
     const [formToggle, setFormToggle] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(1);
     const [amountOfMeetUps] = useState(5);
-    const [loading, setLoading] = useState(false);
 
     // loader functionality
-    useEffect(() => {
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-        },2000)
-    },[])
-
+    const loading = useSelector(isLoadingData);
 
    
     // fetch individual field
@@ -77,7 +70,11 @@ function FieldInfo({selectedField, setSelectedField, handleAddTeammate, location
     }
   return (
     <Container>
-        <NavBar locations={locations}/>
+        <NavBar 
+            locations={locations}
+            isInfoPage={true}
+            handleFormToggle={handleFormToggle}
+        />
         <ToastContainer />
         {loading ? 
             <Loader />
@@ -112,12 +109,6 @@ function FieldInfo({selectedField, setSelectedField, handleAddTeammate, location
                 />
             </div>
             <div className='new-meet-up-container'>
-                <button className='learn-more' onClick={handleFormToggle}>
-                    <span className="circle" aria-hidden="true">
-                    <span className="icon arrow"></span>
-                    </span>
-                    <span className="button-text">Want To Create Your Own</span>
-                </button>
                 {formToggle ? <Form className='new-mu-form'>
                     <h3>Create a Meet Up</h3> 
                     <input fluid type="datetime-local" name="date" value={date}onChange={(e) => setDate(e.target.value)}/>
@@ -149,7 +140,7 @@ const Container = styled.div`
     .field-info-title {
         color: rgb(12, 12, 12);
         text-align: center;
-        font-size: 4.5rem;
+        font-size: 4.5vw;
         font-family: "Ultra", serif;
         position: relative;
         background-color: transparent;
@@ -159,7 +150,6 @@ const Container = styled.div`
     .meet-ups-list{
         display: flex;
         position: relative;
-        bottom: 10%;
         gap: 1rem;
     }
     .new-meet-up-container{
@@ -171,13 +161,13 @@ const Container = styled.div`
         display:flex;
         flex-direction: column;
         position: absolute;
-        right: 1rem;
+        right: 18rem;
         width: 15vw;
         border-style: solid;
         border-width: 20px;
         border-radius: 10px;
-        border-color: rgb(8, 7, 7);
-        background-color: black;
+        border-color: #535353;
+        background-color: #535353;
     }
     .create {
         margin-bottom: 15px;
@@ -218,7 +208,8 @@ const Container = styled.div`
     }
     }
     #pagination {
-        margin-top: 7rem;
+       position: relative;
+       bottom: 16rem;
     }
 `;
 

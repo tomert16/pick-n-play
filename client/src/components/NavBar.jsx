@@ -10,7 +10,7 @@ import { logOut, selectLoggedInPlayer } from '../redux/players/playersSlice';
 import { adminLogout } from '../redux/admin/adminsSlice';
 
 
-function NavBar({ setSportFieldToggle, isHome, isAdmin }) {
+function NavBar({ setSportFieldToggle, isHome, isAdmin, handleFormToggle, isInfoPage }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [iconToggle, setIconToggle] = useState(false);
@@ -58,6 +58,9 @@ function NavBar({ setSportFieldToggle, isHome, isAdmin }) {
                 </ul>}
             </div>
             <div className="right flex a-center">
+                {isInfoPage ? <button className="request" onClick={handleFormToggle}>
+                    <span>Create New Meetup</span>
+                </button> : null}
                 {isAdmin ? null : <button className="request" onClick={() => navigate('/requests')}>
                     <span>Request Sport or Field</span>
                 </button>}

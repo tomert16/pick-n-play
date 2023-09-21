@@ -16,10 +16,10 @@ for (let i = 1; i < Math.ceil(total / amount); i++) {
         {end ? null : <button className={isSport ? "next-btn" : "field-next-btn"} onClick={() => next()} disabled={end}>
             <BsArrowRightCircle />
         </button>}
-        {displayNum ? <p className={isSport ? "slide-num flex j-center" : "field-slide-num flex j-center"}>
+        {/* {displayNum ? <p className={isSport ? "slide-num flex j-center" : "field-slide-num flex j-center"}>
         {slide.map((index) => (
                 <h2 className={index === currentSlide ? 'active' : ''} key={index}>{index}</h2>
-        ))}</p> : null}
+        ))}</p> : null} */}
     </Container>
   )
 }
@@ -40,7 +40,7 @@ const Container = styled.div`
     .field-prev-btn {
         cursor: pointer;
         position: absolute;
-        bottom: 30%;
+        bottom: 50%;
         left: 1%;
         background-color: transparent;
         border-color: transparent;
@@ -53,7 +53,7 @@ const Container = styled.div`
         cursor: pointer;
         position: absolute;
         bottom: 50%;
-        left: 92%;
+        left: 95.5%;
         background-color: transparent;
         border-color: transparent;
         svg {
@@ -64,8 +64,8 @@ const Container = styled.div`
     .field-next-btn {
         cursor: pointer;
         position: absolute;
-        bottom: 30%;
-        left: 92%;
+        bottom: 50%;
+        left: 95%;
         background-color: transparent;
         border-color: transparent;
         svg {

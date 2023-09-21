@@ -49,16 +49,16 @@ const Container = styled.div`
     border-style: solid;
     border-color: black;
     border-width: 3.5px;
-    width: 20rem;
-    height: 15rem;
+    width: 20vw;
+    height: 15vw;
     img {
       width: 100vw;
       border-radius: 10px;
     }
     h3 {
       position: absolute;
-      bottom: 20%;
-      font-size: 1.7rem;
+      /* bottom: 20%; */
+      font-size: 180%;
       text-align: center;
       width: 12rem;
     }

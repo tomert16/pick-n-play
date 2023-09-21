@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Form } from "semantic-ui-react";
 import MeetUpList from '../components/sport/MeetUpsList';
 import NavBar from '../components/NavBar';
-import { fetchSportById, selectSportById } from '../redux/sports/sportsSlice';
+import { fetchSportById, isLoadingData, selectSportById } from '../redux/sports/sportsSlice';
 import { addNewMeetUp } from '../redux/meetUps/meetUpsSlice';
 import { selectLoggedInPlayer } from '../redux/players/playersSlice';
 import Pagination from '../ui/Pagination';
@@ -24,15 +24,9 @@ function SportInfo({ setSelectedMeetUp, handleAddTeammate, locations }) {
     const loggedInPlayer = useSelector(selectLoggedInPlayer);
     const [amountOfMeetUps] = useState(5);
     const [currentSlide, setCurrentSlide] = useState(1);
-    const [loading, setLoading] = useState(false);
 
     // loading function
-    useEffect(() => {
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-        }, 2000)
-    },[])
+    const loading = useSelector(isLoadingData);
     
     // fetch individual sport
     const individualSport = useSelector(selectSportById);
@@ -81,7 +75,12 @@ function SportInfo({ setSelectedMeetUp, handleAddTeammate, locations }) {
     
     return (
           <Container>
-            <NavBar loggedInPlayer={loggedInPlayer}  locations={locations}/>
+            <NavBar 
+                loggedInPlayer={loggedInPlayer}  
+                locations={locations} 
+                handleFormToggle={handleFormToggle}
+                isInfoPage={true}
+            />
             <ToastContainer />
             {loading ? 
              <Loader />
@@ -116,12 +115,6 @@ function SportInfo({ setSelectedMeetUp, handleAddTeammate, locations }) {
                     />
                 </div>
             <div className='new-meet-up-container'>
-                <button className='learn-more' onClick={handleFormToggle}>
-                    <span class="circle" aria-hidden="true">
-                    <span class="icon arrow"></span>
-                    </span>
-                    <span class="button-text">Want To Create Your Own</span>
-                </button>
                 {formToggle ?
                     <Form className='new-mu-form'>
                         <h3>Create a Meet Up</h3> 
@@ -159,7 +152,7 @@ const Container = styled.div`
     .info-title {
         color: rgb(246, 247, 248);
         text-align: center;
-        font-size: 5pc;
+        font-size: 5vw;
         font-family: "Ultra", serif;
         position: relative;
         background-color: transparent;
@@ -168,7 +161,6 @@ const Container = styled.div`
     .meet-ups-list{
         display: flex;
         position: relative;
-        bottom: 10%;
         gap: 1rem;
     }
     .new-meet-up-container{
@@ -176,57 +168,62 @@ const Container = styled.div`
         top: 4rem;
         right: 10%;
     }
-.new-mu-form{
-    display:flex;
-    flex-direction: column;
-    position: absolute;
-    right: 1rem;
-    width: 15vw;
-    border-style: solid;
-    border-width: 20px;
-    border-radius: 10px;
-    border-color: rgb(8, 7, 7);
-    background-color: black;
-}
-.create {
-  margin-bottom: 15px;
-  height: 35px;
-  padding-left: 12px;
-  padding-right: 12px;
-  font-family: 'Ultra', serif;
-  color: #4d4574;
-  background-color: aliceblue;
-  border-color: rgb(255, 205, 98);
-  border-radius: 40px;
-  text-align: center;
-  cursor: pointer;
-}
-.close-form {
-    background-color: transparent;
-    border: none;
-    color: white;
-    position: relative;
-    top: -14rem;
-    left: 50%;
-    cursor: pointer;
-    svg {
-        font-size: 2rem;
+    .new-mu-form{
+        display:flex;
+        flex-direction: column;
+        position: absolute;
+        right: 10rem;
+        top: -5rem;
+        width: 15vw;
+        border-style: solid;
+        border-width: 20px;
+        border-radius: 10px;
+        border-color: #535353;
+        background-color: #535353;
     }
-}
-.new-mu-form > input {
-  margin-bottom: 15px;
-  height: 25px;
-}
-.new-mu-form > select {
-  margin-bottom: 15px;
-  height: 25px;
-}
-.new-mu-form > h3 {
-  color: white;
-  font-size: larger;
-  font-family: 'Ultra', serif;
-  padding-bottom: 20px;
-}
+    .create {
+        margin-bottom: 15px;
+        height: 35px;
+        padding-left: 12px;
+        padding-right: 12px;
+        font-family: 'Ultra', serif;
+        color: #4d4574;
+        background-color: aliceblue;
+        border-color: rgb(255, 205, 98);
+        border-radius: 40px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .close-form {
+        background-color: transparent;
+        border: none;
+        color: white;
+        position: relative;
+        top: -14rem;
+        left: 50%;
+        cursor: pointer;
+        svg {
+            font-size: 2rem;
+        }
+    }
+    .new-mu-form > input {
+        margin-bottom: 15px;
+        height: 25px;
+    }
+    .new-mu-form > select {
+        margin-bottom: 15px;
+        height: 25px;
+    }
+    .new-mu-form > h3 {
+        color: white;
+        font-size: larger;
+        font-family: 'Ultra', serif;
+        padding-bottom: 20px;
+    }
+    #pagination {
+        position: relative;
+        bottom: 15rem;
+    }
 `;
 
 export default SportInfo;
