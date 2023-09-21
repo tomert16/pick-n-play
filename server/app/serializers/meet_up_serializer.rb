@@ -1,8 +1,5 @@
 class MeetUpSerializer < ActiveModel::Serializer
   attributes :id, :date, :field, :player, :sport, :teammates, :created_at
-  # belongs_to :sport
-  # belongs_to :field
-  # belongs_to :player
 
 
   def player
