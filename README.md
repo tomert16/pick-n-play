@@ -28,6 +28,7 @@
 - Once completed run `docker compose up` to start up the application
 - Once all containers are up and running, open up a new tab in your terminal and run `docker compose run server rails db:create db:migrate db:seed`, to insert all of the necessary tables and seeds in the database. 
 - In the browser go to localhost:8080 .
+- You can sign up to start using the application or use any oof the demo seeds here: https://github.com/tomert16/pick-n-play/blob/main/server/db/seeds.rb 
 ### Running Locally:
 #### Set up Environment Variables:
 - Create copies of the sample.env files found in both the client and server directory.
