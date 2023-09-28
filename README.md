@@ -1,3 +1,4 @@
+### Pick N' Play was created to assist individuals in discovering pick-up games for various sports in nearby fields or parks, enabling them to join or leave a pick-up game, empowering them to create their own pick-up games, as well as enabling them to request a new sport or field.
 # Frontend portion of the Pick n Play App:
 ## Created With: 
 + React + Vite
