@@ -55,6 +55,11 @@ const Container = styled.div`
         bottom: 15%;
         left: 10%;
     }
+    @media (max-width: 768px) {
+        .landing-text {
+            font-size: 1.6rem;
+        }
+    }
     .cssbuttons-io-button {
         background: #724f72;
         color: white;

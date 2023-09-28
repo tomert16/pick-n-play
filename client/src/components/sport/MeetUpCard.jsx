@@ -9,28 +9,25 @@ import Typography from '@mui/material/Typography';
 import styled from 'styled-components';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
-import { joinMeetUp } from '../../redux/meetUps/meetUpsSlice';
+import { joinMeetUp, updatedMeetUps } from '../../redux/meetUps/meetUpsSlice';
 import { fetchSportById } from '../../redux/sports/sportsSlice';
 import PropTypes from 'prop-types';
 import { meetUpDropCanceled, successfullyDropped, successfullyJoined, unsuccessfullyJoined } from '../../ui/Toastify';
 
 
 function MeetUpCard({ loggedInPlayer, meetUp, setShowMeetUp, isMeetUpFull, totalPlayers }) {
-    const {id: sportId} = useParams();
     const dispatch = useDispatch();
-
-   
-
+    const {id: sportId} = useParams();
     // checks if the user has already joined the meet up
     const isJoined = meetUp.teammates.some((teammate) => teammate.id === loggedInPlayer.id)
 
    
     const handleJoinTeam = async() => {
-        const join = {
-          "meet_up_id": meetUp.id,
-          "player_id": loggedInPlayer.id
-        };
-        if (loggedInPlayer.id !== meetUp.player.id && !isJoined){
+      const join = {
+        "meet_up_id": meetUp.id,
+        "player_id": loggedInPlayer.id
+      };
+      if (loggedInPlayer.id !== meetUp.player.id && !isJoined){
           await dispatch(joinMeetUp(join));
           await dispatch(fetchSportById(sportId));
           successfullyJoined();
@@ -55,7 +52,7 @@ function MeetUpCard({ loggedInPlayer, meetUp, setShowMeetUp, isMeetUpFull, total
           } else {
             meetUpDropCanceled();
           }
-      }
+      };
   
 
     const handleBackClick = () => {
@@ -87,7 +84,7 @@ function MeetUpCard({ loggedInPlayer, meetUp, setShowMeetUp, isMeetUpFull, total
               <li>{meetUp.player.name}</li>
             </Typography>
             <Typography variant="body2" color="text.secondary">
-            {meetUp.teammates.map((player) => (<li className="teammates">{player.name}</li>))}
+            {meetUp.teammates.map((player) => (<li className="teammates" key={player.id}>{player.name}</li>))}
             </Typography>
           </CardContent>
           <CardActions>

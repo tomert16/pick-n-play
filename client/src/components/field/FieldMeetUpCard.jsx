@@ -20,13 +20,9 @@ function FieldMeetUpCard({meetUp, loggedInPlayer, setShowMeetUp, isMeetUpFull, t
   const {id: fieldId} = useParams();
 
   
-  const handleBackClick = () => {
-    setShowMeetUp(false)
-  }
-
   // checks if the user has already joined the meet up
   const isJoined = meetUp.teammates.some((teammate) => teammate.id === loggedInPlayer.id);
-
+  
   const handleJoinTeam = async() => {
     const join = {
       "meet_up_id": meetUp.id,
@@ -40,7 +36,7 @@ function FieldMeetUpCard({meetUp, loggedInPlayer, setShowMeetUp, isMeetUpFull, t
       unsuccessfullyJoined();
     }
   }
-
+  
   const handleDropMeetUp = async(id) => {
     let confirmation = window.confirm("Are you sure you want to leave this meet up?");
     if (confirmation === true) {
@@ -58,7 +54,10 @@ function FieldMeetUpCard({meetUp, loggedInPlayer, setShowMeetUp, isMeetUpFull, t
       meetUpDropCanceled();
     }
   };
-
+  
+  const handleBackClick = () => {
+    setShowMeetUp(false)
+  };
 
   return (
     <Container>
@@ -115,11 +114,11 @@ const Container = styled.div`
     cursor: pointer;
     position: relative;
     background: rgba(0,0,0,.5);
-    height: 100%;
+    height: 100vh;
     left: 0;
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 100vw;
     z-index: 1000;
     overflow-x: scroll;
     .field-meet-up-card {

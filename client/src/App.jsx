@@ -19,7 +19,6 @@ function App() {
   const dispatch = useDispatch();
   const [selectedSport, setSelectedSport] = useState();
   // eslint-disable-next-line 
-  const [selectedMeetUp, setSelectedMeetUp] = useState();
   const [selectedField, setSelectedField] = useState();
   const [individualLocation, setIndividualLocation] = useState();
 
@@ -86,7 +85,7 @@ function App() {
       element: <SportInfo 
         selectedSport={selectedSport}
         setSelectedSport={setSelectedSport}
-        setSelectedMeetUp={setSelectedMeetUp}
+        // setSelectedMeetUp={setSelectedMeetUp}
         individualLocation={individualLocation}
       />
     },

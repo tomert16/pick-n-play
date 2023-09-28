@@ -56,5 +56,5 @@ const fieldsSlice = createSlice(
 
 export const selectAllFields = (state) => state.fields.list;
 export const selectFieldById = (state) => state.fields.byId;
-export const isLoadingData = (state) => state.sports.isLoading;
+export const isLoadingData = (state) => state.fields.isLoading;
 export default fieldsSlice.reducer;

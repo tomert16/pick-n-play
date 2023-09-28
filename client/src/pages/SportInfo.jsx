@@ -15,16 +15,15 @@ import { ToastContainer } from 'react-toastify';
 import { successfullyCreated, unsuccessfullyCreated } from '../ui/Toastify';
 
 
-function SportInfo({ setSelectedMeetUp, handleAddTeammate, locations }) {
+function SportInfo({ setSelectedMeetUp, locations }) {
     const dispatch = useDispatch();
     const { id } = useParams();
+    const loggedInPlayer = useSelector(selectLoggedInPlayer);
     const [date, setDate] = useState("");
     const [location, setLocation] = useState();
     const [formToggle, setFormToggle] = useState(false);
-    const loggedInPlayer = useSelector(selectLoggedInPlayer);
-    const [amountOfMeetUps] = useState(5);
+    const [amountOfMeetUps, setAmountOfMeetUps] = useState();
     const [currentSlide, setCurrentSlide] = useState(1);
-
     // loading function
     const loading = useSelector(isLoadingData);
     
@@ -33,11 +32,11 @@ function SportInfo({ setSelectedMeetUp, handleAddTeammate, locations }) {
     useEffect(() => {
         dispatch(fetchSportById(id));
     },[dispatch, id]);
-
+    
     const handleFormToggle = () => {
         setFormToggle(true)
     }
-
+    
     const createMeetUps = async() => {
         const newMeetUp = {
             "date": date,
@@ -56,12 +55,18 @@ function SportInfo({ setSelectedMeetUp, handleAddTeammate, locations }) {
         }
     };  
     
+    // display amount of meet ups based on screen size
+    useEffect(() => {
+        if (window.innerWidth >= 768) {
+            setAmountOfMeetUps(5)
+        } else {
+            setAmountOfMeetUps(3)
+        }
+    }, [amountOfMeetUps])
     
     
-    if (individualSport === undefined){
-        return null;
-    }
- 
+    if (individualSport === undefined) return null;
+    
 
     // Pagination variables and values 
     const indexOfLastCard = currentSlide * amountOfMeetUps;
@@ -95,7 +100,6 @@ function SportInfo({ setSelectedMeetUp, handleAddTeammate, locations }) {
                                     meetUp={meetUp}
                                     key={meetUp.id}
                                     loggedInPlayer={loggedInPlayer}
-                                    handleAddTeammate={handleAddTeammate}
                                     individualSport={individualSport}
                                 />
                             )
@@ -134,8 +138,7 @@ function SportInfo({ setSelectedMeetUp, handleAddTeammate, locations }) {
                         <button className="close-form" type='button' onClick={() => setFormToggle(false)}>
                             <AiOutlineCloseCircle />
                         </button>
-                    </Form> 
-                : null}
+                    </Form> : null}
                 </div>
             </div>}
         </Container>
@@ -223,6 +226,11 @@ const Container = styled.div`
     #pagination {
         position: relative;
         bottom: 15rem;
+        @media (max-width: 768px) {
+           width: 80%;
+           left: 8%;
+           bottom: 20%;
+        }
     }
 `;
 

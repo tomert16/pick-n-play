@@ -35,6 +35,12 @@ const meetUpsSlice = createSlice(
             list: [],
             teammates: []
         },
+        reducers: {
+            updatedMeetUps: (state, action) => {
+                // Update the meetupList in the Redux store with the new data
+                state.meetupList = action.payload;
+              },
+        },
         extraReducers: (builder) =>{
             builder
                 .addCase(addNewMeetUp.fulfilled, (state, action) => {
@@ -50,5 +56,5 @@ const meetUpsSlice = createSlice(
     }
 );
 
-export const { sortedMeetUps } = meetUpsSlice.actions;
+export const { sortedMeetUps, updatedMeetUps } = meetUpsSlice.actions;
 export default meetUpsSlice.reducer;

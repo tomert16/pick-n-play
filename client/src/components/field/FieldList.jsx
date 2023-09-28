@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import FieldCard from './FieldCard';
 
 
-function FieldList({ individualLocation}) {
+function FieldList({individualLocation}) {
   
   return (
       <Container>

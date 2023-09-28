@@ -15,37 +15,25 @@ import { ToastContainer } from 'react-toastify';
 import { successfullyCreated, unsuccessfullyCreated } from '../ui/Toastify';
 
 
-function FieldInfo({selectedField, setSelectedField, handleAddTeammate, locations}) {
+function FieldInfo({selectedField, setSelectedField, locations}) {
     const dispatch = useDispatch();
     const { id } = useParams();
     const loggedInPlayer = useSelector(selectLoggedInPlayer)
     const [date, setDate] = useState("");
     const [sportInput, setSportInput] = useState();
     const [formToggle, setFormToggle] = useState(false);
+    const [amountOfMeetUps, setAmountOfMeetUps] = useState();
     const [currentSlide, setCurrentSlide] = useState(1);
-    const [amountOfMeetUps] = useState(5);
 
     // loader functionality
     const loading = useSelector(isLoadingData);
-
    
     // fetch individual field
     const individualField = useSelector(selectFieldById);
     useEffect(() => {
         dispatch(fetchFieldById(id))
     },[dispatch, id])
-    
-    if (individualField === undefined) return null;
-     
-    // pagination variables and values
-    const indexOfLastCard = currentSlide * amountOfMeetUps;
-    const indexOfFirstCard = indexOfLastCard - amountOfMeetUps;
-    // // change slides functionalities
-    const nextSlide = () => setCurrentSlide(currentSlide + 1);
-    const previousSlide = () => setCurrentSlide(currentSlide - 1);
-    const end = indexOfLastCard >= individualField.meet_ups.length
-    const beginning = currentSlide === 1;
-    
+
     const createMeetUp = async() => {
         const newMeetUp = {
             "date": date,
@@ -63,6 +51,27 @@ function FieldInfo({selectedField, setSelectedField, handleAddTeammate, location
             unsuccessfullyCreated();
         }
     };
+    
+    // display amount of meet ups based on screen size
+    useEffect(() => {
+        if (window.innerWidth >= 768) {
+            setAmountOfMeetUps(5)
+        } else {
+            setAmountOfMeetUps(3)
+        }
+    }, [amountOfMeetUps])
+
+    if (individualField === undefined) return null;
+     
+    // pagination variables and values
+    const indexOfLastCard = currentSlide * amountOfMeetUps;
+    const indexOfFirstCard = indexOfLastCard - amountOfMeetUps;
+    // // change slides functionalities
+    const nextSlide = () => setCurrentSlide(currentSlide + 1);
+    const previousSlide = () => setCurrentSlide(currentSlide - 1);
+    const end = indexOfLastCard >= individualField.meet_ups.length
+    const beginning = currentSlide === 1;
+    
     
  
     const handleFormToggle = () => {
@@ -90,8 +99,6 @@ function FieldInfo({selectedField, setSelectedField, handleAddTeammate, location
                             selectedField={selectedField}
                             setSelectedField={setSelectedField}
                             loggedInPlayer={loggedInPlayer}
-                            handleAddTeammate={handleAddTeammate}
-                            
                         />
                     )
                 )}
@@ -210,6 +217,11 @@ const Container = styled.div`
     #pagination {
        position: relative;
        bottom: 16rem;
+       @media (max-width: 768px) {
+           width: 80%;
+           left: 8%;
+           bottom: 10rem;
+        }
     }
 `;
 
