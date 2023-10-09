@@ -1,3 +1,4 @@
+# Pick N' Play
 ### Pick N' Play was created to assist individuals in discovering pick-up games for various sports in nearby fields or parks, enabling them to join or leave a pick-up game, empowering them to create their own pick-up games, as well as enabling them to request a new sport or field.
 Demo Video: 
 https://www.loom.com/share/2e155256ef0243c8a9efe301bb4c64de
@@ -46,4 +47,3 @@ https://www.loom.com/share/2e155256ef0243c8a9efe301bb4c64de
 
 - Start the backend server by running the command `rails s` <br/>
 - Start the frontend server by running the command `npm run dev`
-# pick-n-play-vite
