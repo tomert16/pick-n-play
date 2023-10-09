@@ -1,11 +1,13 @@
 ### Pick N' Play was created to assist individuals in discovering pick-up games for various sports in nearby fields or parks, enabling them to join or leave a pick-up game, empowering them to create their own pick-up games, as well as enabling them to request a new sport or field.
-# Frontend portion of the Pick n Play App:
+Demo Video: 
+https://www.loom.com/share/2e155256ef0243c8a9efe301bb4c64de
+# Frontend portion
 ## Created With: 
 + React + Vite
 + Redux/Redux toolkit
 + Styled Components
 + Axios
-# Backend portion of the Pick n Play App
+# Backend portion
 ## Created with:
 + Ruby on Rails
 + PostgreSQL
